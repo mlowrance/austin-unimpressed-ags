@@ -398,6 +398,9 @@ FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
 .vscode/*
+
+# Ignore local build/debug folder accidentally committed
+_Debug/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -442,5 +445,3 @@ FodyWeavers.xsd
 /*.vox
 _OpenInEditor.lock
 /_Debug
-_Debug/austin-unimpressed.exe
-_Debug/austin-unimpressed.exe
