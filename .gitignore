@@ -441,3 +441,6 @@ FodyWeavers.xsd
 # but ignore the compiled vox files if they get massive.
 /*.vox
 _OpenInEditor.lock
+/_Debug
+_Debug/austin-unimpressed.exe
+_Debug/austin-unimpressed.exe
