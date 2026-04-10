@@ -14,21 +14,24 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # We use the direct Docker image as our environment
+    container:
+      image: rolandlo/ags-build:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Game
-        # Using the official community action
-        uses: adventuregamestudio/ags-build-action@v1
-        with:
-          # This tells the builder to specifically target the Web
-          target: web
+      - name: Build Game for Web
+        run: |
+          # 1. Create the output directory
+          mkdir -p Compiled/Web
+          # 2. Run the ags compiler specifically for the web target
+          # The dot '.' looks for the .agf in the current folder
+          ags --build-target web .
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This assumes your web files land in Compiled/Web
           path: 'Compiled/Web'
 
   deploy:
