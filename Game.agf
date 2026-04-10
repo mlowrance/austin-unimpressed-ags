@@ -20,7 +20,7 @@
       <ColorDepth>TrueColor</ColorDepth>
       <CompressSpritesType>Deflate</CompressSpritesType>
       <CustomDataDir IsNull="True" />
-      <CustomResolution>320,200</CustomResolution>
+      <CustomResolution>1280,720</CustomResolution>
       <DebugMode>True</DebugMode>
       <DefaultRoomMaskResolution>1</DefaultRoomMaskResolution>
       <Description />
@@ -653,7 +653,16 @@
     <Rooms>
       <UnloadedRoomFolder Name="Main">
         <SubFolders />
-        <UnloadedRooms />
+        <UnloadedRooms>
+          <UnloadedRoom>
+            <Description xml:space="preserve">Splash Screen</Description>
+            <Number>1</Number>
+          </UnloadedRoom>
+          <UnloadedRoom>
+            <Description IsNull="True" />
+            <Number>2</Number>
+          </UnloadedRoom>
+        </UnloadedRooms>
       </UnloadedRoomFolder>
     </Rooms>
     <GUIs>
@@ -861,7 +870,7 @@
             <SpeechView>0</SpeechView>
             <StartX>160</StartX>
             <StartY>160</StartY>
-            <StartingRoom>-1</StartingRoom>
+            <StartingRoom>2</StartingRoom>
             <ThinkingView>0</ThinkingView>
             <TurnBeforeWalking>True</TurnBeforeWalking>
             <TurnWhenFacing>True</TurnWhenFacing>
