@@ -12,30 +12,27 @@ permissions:
   id-token: write
 
 jobs:
-  build-ags:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build AGS Game for Web
-        # We use a Docker container that has the AGS Linux compiler
-        uses: docker://ericoporto/ags-build:latest
+      - name: Build Game
+        # Using the official community action
+        uses: adventuregamestudio/ags-build-action@v1
         with:
-          # This command tells the compiler to build specifically for Web/Emscripten
-          args: /bin/bash -c "ags --build-target web ."
+          # This tells the builder to specifically target the Web
+          target: web
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # AGS outputs web builds to Compiled/Web by default
+          # This assumes your web files land in Compiled/Web
           path: 'Compiled/Web'
 
   deploy:
-    needs: build-ags
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
