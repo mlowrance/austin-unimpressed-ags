@@ -12,31 +12,35 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
-    runs-on: windows-latest
+  build-ags:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download AGS Editor
-        shell: pwsh
-        run: |
-          # Fetch the latest release info from GitHub API
-          $release = Invoke-RestMethod -Uri "https://api.github.com/repos/adventuregamestudio/ags/releases/latest"
-          # Find the asset that is a .zip file (the Editor)
-          $asset = $release.assets | Where-Object { $_.name -like "*.zip" -and $_.name -notlike "*Source*" } | Select-Object -First 1
-          $downloadUrl = $asset.browser_download_url
-          Write-Host "Downloading AGS Editor from $downloadUrl"
-          Invoke-WebRequest -Uri $downloadUrl -OutFile "ags_editor.zip"
-          Expand-Archive -Path "ags_editor.zip" -DestinationPath "AGSEditor"
-
-      - name: Build Game
-        shell: cmd
-        run: |
-          .\AGSEditor\AGSEditor.exe /compile "Game.agf"
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Build AGS Game for Web
+        # We use a Docker container that has the AGS Linux compiler
+        uses: docker://ericoporto/ags-build:latest
         with:
-          folder: Compiled/Web
-          branch: gh-pages
+          # This command tells the compiler to build specifically for Web/Emscripten
+          args: /bin/bash -c "ags --build-target web ."
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # AGS outputs web builds to Compiled/Web by default
+          path: 'Compiled/Web'
+
+  deploy:
+    needs: build-ags
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
