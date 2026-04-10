@@ -14,20 +14,29 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # We use the direct Docker image as our environment
-    container:
-      image: rolandlo/ags-build:latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y liballegro4.4 libpcre3-dev
+
+      - name: Download AGS Linux Compiler
+        run: |
+          # Downloading the 3.6.1.26 release (Stable Linux build)
+          wget https://github.com/adventuregamestudio/ags/releases/download/v.3.6.1.26/ags_3.6.1.26_linux.tar.gz
+          tar -xzf ags_3.6.1.26_linux.tar.gz
+          # Move the compiler to a usable path
+          chmod +x ./ags
+
       - name: Build Game for Web
         run: |
-          # 1. Create the output directory
           mkdir -p Compiled/Web
-          # 2. Run the ags compiler specifically for the web target
-          # The dot '.' looks for the .agf in the current folder
-          ags --build-target web .
+          # Using the downloaded binary to compile the .agf file
+          # Ensure your filename matches exactly (e.g., Game.agf)
+          ./ags --build-target web .
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
