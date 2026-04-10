@@ -25,11 +25,14 @@ jobs:
 
       - name: Download AGS Linux Compiler
         run: |
-          # Downloading the 3.6.1.26 release (Stable Linux build)
-          wget https://github.com/adventuregamestudio/ags/releases/download/v.3.6.1.26/ags_3.6.1.26_linux.tar.gz
-          tar -xzf ags_3.6.1.26_linux.tar.gz
-          # Move the compiler to a usable path
-          chmod +x ./ags
+          # The current 3.6.2 stable Linux release
+          wget https://github.com/adventuregamestudio/ags/releases/download/v3.6.2.2/ags_3.6.2.2_linux.tar.gz
+          tar -xzf ags_3.6.2.2_linux.tar.gz
+          # The binary is usually inside the extracted folder
+          # We'll find it and make it executable
+          find . -name "ags" -exec chmod +x {} +
+          # Move it to the root for easier calling
+          mv $(find . -name "ags" | head -n 1) ./ags
 
       - name: Build Game for Web
         run: |
