@@ -25,7 +25,7 @@ A narrative-driven, satirical "boss rush" adventure built in Adventure Game Stud
 | ⚪ | **10. The 4th Wall:** "Unimpressed" speech bubble | Script | AI |
 | ⚪ | **11. The Ending:** Money pile + Awooga animation | Editor | Human |
 | ⚪ | **12. The Twist:** Falling House & Game Over | Script | Pair |
-| ⚪ | **13. CI/CD:** GitHub Action for Web Deployment | DevOps | AI |
+| 🟢 | **13. CI/CD:** GitHub Action for Web Deployment | DevOps | AI |
 
 ## 4. Game Design Specifications
 

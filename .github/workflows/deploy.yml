@@ -1,0 +1,42 @@
+name: Build and Deploy AGS Web
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download AGS Editor
+        shell: pwsh
+        run: |
+          # Fetch the latest release info from GitHub API
+          $release = Invoke-RestMethod -Uri "https://api.github.com/repos/adventuregamestudio/ags/releases/latest"
+          # Find the asset that is a .zip file (the Editor)
+          $asset = $release.assets | Where-Object { $_.name -like "*.zip" -and $_.name -notlike "*Source*" } | Select-Object -First 1
+          $downloadUrl = $asset.browser_download_url
+          Write-Host "Downloading AGS Editor from $downloadUrl"
+          Invoke-WebRequest -Uri $downloadUrl -OutFile "ags_editor.zip"
+          Expand-Archive -Path "ags_editor.zip" -DestinationPath "AGSEditor"
+
+      - name: Build Game
+        shell: cmd
+        run: |
+          .\AGSEditor\AGSEditor.exe /compile "Game.agf"
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: Compiled/Web
+          branch: gh-pages
