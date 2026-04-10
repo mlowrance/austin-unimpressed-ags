@@ -416,3 +416,28 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# --- AGS Specific ---
+# Compiled game files (The stuff that goes in the browser/player)
+/_Compiled/
+
+# Local user settings (Window positions, recently opened files)
+/*.user
+
+# Backup files (AGS creates these every time you save)
+/*.bak
+
+# Cache and temporary data
+/cache/
+/*.cache
+/ScriptCache/
+
+# The actual engine executable if you put it in the folder
+/ags.exe
+/win32/
+/linux/
+
+# If you use the speech or audio folders, we usually keep the source 
+# but ignore the compiled vox files if they get massive.
+/*.vox
+_OpenInEditor.lock
