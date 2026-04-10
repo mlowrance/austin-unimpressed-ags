@@ -18,28 +18,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install AGS Compiler
         run: |
+          sudo add-apt-repository ppa:adventuregamestudio/ppa -y
           sudo apt-get update
-          sudo apt-get install -y liballegro4.4 libpcre3-dev
-
-      - name: Download AGS Linux Compiler
-        run: |
-          # The current 3.6.2 stable Linux release
-          wget https://github.com/adventuregamestudio/ags/releases/download/v3.6.2.2/ags_3.6.2.2_linux.tar.gz
-          tar -xzf ags_3.6.2.2_linux.tar.gz
-          # The binary is usually inside the extracted folder
-          # We'll find it and make it executable
-          find . -name "ags" -exec chmod +x {} +
-          # Move it to the root for easier calling
-          mv $(find . -name "ags" | head -n 1) ./ags
+          sudo apt-get install -y ags
 
       - name: Build Game for Web
         run: |
           mkdir -p Compiled/Web
-          # Using the downloaded binary to compile the .agf file
-          # Ensure your filename matches exactly (e.g., Game.agf)
-          ./ags --build-target web .
+          # Using the system-installed 'ags' to build
+          # The '.' tells it to look for the .agf in the root
+          ags --build-target web .
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
