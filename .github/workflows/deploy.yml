@@ -13,31 +13,27 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Build Dependencies
+      - name: Download AGS Editor
+        shell: pwsh
         run: |
-          sudo apt-get update
-          sudo apt-get install -y liballegro4.4 libpcre3-dev libsdl2-2.0-0
-
-      - name: Download and Prepare AGS
-        run: |
-          # Use the stable 3.6.2 release
-          # We'll use the 'full' release which contains the compiler
-          wget https://github.com/adventuregamestudio/ags/releases/download/v3.6.2.2/ags_3.6.2.2_linux.tar.gz
-          mkdir -p ags_compiler
-          tar -xzf ags_3.6.2.2_linux.tar.gz -C ags_compiler
-          # Find the engine binary and make it executable
-          chmod +x ags_compiler/ags
+          # Downloading the specific 3.6.2.18 release zip
+          $url = "https://github.com/adventuregamestudio/ags/releases/download/v3.6.2.18/AGS-3.6.2.18-P8.zip"
+          Invoke-WebRequest -Uri $url -OutFile "ags.zip"
+          Expand-Archive -Path "ags.zip" -DestinationPath "AGSEditor"
 
       - name: Build Game for Web
+        shell: cmd
         run: |
-          mkdir -p Compiled/Web
-          # We call the engine with the --build-target flag
-          ./ags_compiler/ags --build-target web .
+          # 1. Ensure the directory exists
+          if not exist "Compiled\Web" mkdir "Compiled\Web"
+          # 2. Run the compiler
+          # Note: We use /compile which is the standard flag for the Windows Editor
+          .\AGSEditor\AGSEditor.exe /compile "Game.agf"
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
