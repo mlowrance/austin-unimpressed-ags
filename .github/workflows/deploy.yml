@@ -29,26 +29,24 @@ jobs:
       - name: Build Game for Web
         shell: cmd
         run: |
-          # 1. Run the compile
-          .\AGSEditor\AGSEditor.exe /compile "Game.agf"
+          :: 1. Find where the .agf file actually is
+          dir /s /b *.agf > agf_path.txt
+          set /p AGF_FILE=<agf_path.txt
+          echo Detected Project File: %AGF_FILE%
+
+          :: 2. Run the compile using the detected path
+          .\AGSEditor\AGSEditor.exe /compile "%AGF_FILE%"
           
-          # 2. SANITY CHECK: See what was actually created
-          echo --- BUILD DIRECTORY FILING ---
+          :: 3. Create Web folder if it doesn't exist (just in case)
+          if not exist "Compiled\Web" mkdir "Compiled\Web"
+
+          :: 4. Force rename any output to index.html
+          if exist "Compiled\Web\launcher_index.html" ren "Compiled\Web\launcher_index.html" "index.html"
+          if exist "Compiled\Web\Game.html" ren "Compiled\Web\Game.html" "index.html"
+
+          :: 5. Final check to see what we actually have
           dir /s Compiled
           
-          # 3. If Compiled\Web is empty, we need to move the files 
-          # Some versions of AGS put the web files in _Debug or a different subfolder
-          if not exist "Compiled\Web\index.html" (
-            echo WARNING: index.html not found in Compiled\Web. Checking other locations...
-            if exist "Compiled\Web\launcher_index.html" ren "Compiled\Web\launcher_index.html" "index.html"
-          )
-          
-          # 4. Final Fail-Safe: If the folder is still empty, stop the workflow here
-          if not exist "Compiled\Web\index.html" (
-            echo ERROR: Web build failed to produce index.html.
-            exit 1
-          )
-
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
