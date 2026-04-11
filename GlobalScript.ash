@@ -4,4 +4,4 @@
 // scripts.
 
 import function CheckRoomMovement(Character *theChar);
-import function DropRoomObject(Object *theObj, int dropToY);
+import function DropRoomObject(Object *theObj, int dropToY, int yPosition = 800);

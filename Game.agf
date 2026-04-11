@@ -666,6 +666,10 @@
             <Description xml:space="preserve">Massive PR</Description>
             <Number>3</Number>
           </UnloadedRoom>
+          <UnloadedRoom>
+            <Description xml:space="preserve">Lottery Ticket</Description>
+            <Number>4</Number>
+          </UnloadedRoom>
         </UnloadedRooms>
       </UnloadedRoomFolder>
     </Rooms>
@@ -947,7 +951,7 @@
             <IdleDelay>20</IdleDelay>
             <IdleView>0</IdleView>
             <MovementLinkedToAnimation>True</MovementLinkedToAnimation>
-            <MovementSpeed>12</MovementSpeed>
+            <MovementSpeed>20</MovementSpeed>
             <MovementSpeedX>3</MovementSpeedX>
             <MovementSpeedY>0</MovementSpeedY>
             <NormalView>2</NormalView>
@@ -1569,6 +1573,22 @@
               <OffsetY>0</OffsetY>
               <ImportHeight>320</ImportHeight>
               <ImportWidth>358</ImportWidth>
+              <ImportAsTile>False</ImportAsTile>
+              <Frame>0</Frame>
+              <RemapToGamePalette>True</RemapToGamePalette>
+              <RemapToRoomPalette>False</RemapToRoomPalette>
+              <ImportMethod>LeaveAsIs</ImportMethod>
+              <TransparentColorIndex>0</TransparentColorIndex>
+              <ImportAlphaChannel>True</ImportAlphaChannel>
+            </Source>
+          </Sprite>
+          <Sprite Slot="7" Width="568" Height="283" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+            <Source>
+              <FileName>C:\Users\matth\Downloads\lottery_ticket (Phone).png</FileName>
+              <OffsetX>0</OffsetX>
+              <OffsetY>0</OffsetY>
+              <ImportHeight>283</ImportHeight>
+              <ImportWidth>568</ImportWidth>
               <ImportAsTile>False</ImportAsTile>
               <Frame>0</Frame>
               <RemapToGamePalette>True</RemapToGamePalette>
