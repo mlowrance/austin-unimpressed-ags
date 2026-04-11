@@ -726,50 +726,6 @@
               </GUILabel>
             </Controls>
           </GUIMain>
-          <GUIMain>
-            <NormalGUI>
-              <BackgroundColor>8</BackgroundColor>
-              <BackgroundImage>0</BackgroundImage>
-              <BorderColor>2</BorderColor>
-              <Clickable>True</Clickable>
-              <Height>30</Height>
-              <ID>1</ID>
-              <Left>0</Left>
-              <Name>gRetirementBar</Name>
-              <OnClick />
-              <PopupStyle>Normal</PopupStyle>
-              <PopupYPos>0</PopupYPos>
-              <ScriptModule>GlobalScript.asc</ScriptModule>
-              <Top>0</Top>
-              <Transparency>0</Transparency>
-              <Visible>False</Visible>
-              <Width>1280</Width>
-              <ZOrder>0</ZOrder>
-            </NormalGUI>
-            <Controls>
-              <GUISlider>
-                <BackgroundImage>0</BackgroundImage>
-                <Clickable>True</Clickable>
-                <Enabled>True</Enabled>
-                <HandleImage>0</HandleImage>
-                <HandleOffset>0</HandleOffset>
-                <Height>25</Height>
-                <ID>0</ID>
-                <Left>108</Left>
-                <Locked>False</Locked>
-                <MaxValue>3</MaxValue>
-                <MinValue>0</MinValue>
-                <Name>sldRetirement</Name>
-                <OnChange />
-                <Top>4</Top>
-                <Translated>True</Translated>
-                <Value>0</Value>
-                <Visible>False</Visible>
-                <Width>284</Width>
-                <ZOrder>0</ZOrder>
-              </GUISlider>
-            </Controls>
-          </GUIMain>
         </GUIs>
       </GUIFolder>
     </GUIs>
