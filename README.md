@@ -23,11 +23,3 @@ The GitHub Actions workflow (`deploy.yml`) handles building and deploying the ga
 - Deploys to Pages.
 
 To trigger a manual deploy, go to the Actions tab and run the "Build and Deploy AGS Web" workflow.
-
-## Contributing
-
-Feel free to fork and submit pull requests. Ensure changes are tested locally before pushing.
-
-## License
-
-[Add license information here, e.g., MIT]
