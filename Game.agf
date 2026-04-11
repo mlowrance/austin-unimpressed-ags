@@ -674,6 +674,10 @@
             <Description>Beach</Description>
             <Number>5</Number>
           </UnloadedRoom>
+          <UnloadedRoom>
+            <Description>Instructions</Description>
+            <Number>6</Number>
+          </UnloadedRoom>
         </UnloadedRooms>
       </UnloadedRoomFolder>
     </Rooms>
@@ -708,16 +712,16 @@
                 <Font>3</Font>
                 <Height>117</Height>
                 <ID>0</ID>
-                <Left>406</Left>
+                <Left>306</Left>
                 <Locked>False</Locked>
                 <Name>lblPressSpace</Name>
-                <Text xml:space="preserve">PRESS SPACE TO CONTINUE</Text>
+                <Text xml:space="preserve">PRESS SPACE OR TAP TO CONTINUE</Text>
                 <TextAlignment>MiddleCenter</TextAlignment>
                 <TextColor>65535</TextColor>
                 <Top>593</Top>
                 <Translated>True</Translated>
                 <Visible>True</Visible>
-                <Width>448</Width>
+                <Width>650</Width>
                 <ZOrder>0</ZOrder>
               </GUILabel>
             </Controls>
