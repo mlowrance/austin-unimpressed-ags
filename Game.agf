@@ -670,6 +670,10 @@
             <Description xml:space="preserve">Lottery Ticket</Description>
             <Number>4</Number>
           </UnloadedRoom>
+          <UnloadedRoom>
+            <Description>Beach</Description>
+            <Number>5</Number>
+          </UnloadedRoom>
         </UnloadedRooms>
       </UnloadedRoomFolder>
     </Rooms>
@@ -1589,6 +1593,70 @@
               <OffsetY>0</OffsetY>
               <ImportHeight>283</ImportHeight>
               <ImportWidth>568</ImportWidth>
+              <ImportAsTile>False</ImportAsTile>
+              <Frame>0</Frame>
+              <RemapToGamePalette>True</RemapToGamePalette>
+              <RemapToRoomPalette>False</RemapToRoomPalette>
+              <ImportMethod>LeaveAsIs</ImportMethod>
+              <TransparentColorIndex>0</TransparentColorIndex>
+              <ImportAlphaChannel>True</ImportAlphaChannel>
+            </Source>
+          </Sprite>
+          <Sprite Slot="8" Width="640" Height="480" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+            <Source>
+              <FileName>C:\Users\matth\Downloads\retirement_fund (Custom).png</FileName>
+              <OffsetX>0</OffsetX>
+              <OffsetY>0</OffsetY>
+              <ImportHeight>480</ImportHeight>
+              <ImportWidth>640</ImportWidth>
+              <ImportAsTile>False</ImportAsTile>
+              <Frame>0</Frame>
+              <RemapToGamePalette>True</RemapToGamePalette>
+              <RemapToRoomPalette>False</RemapToRoomPalette>
+              <ImportMethod>LeaveAsIs</ImportMethod>
+              <TransparentColorIndex>0</TransparentColorIndex>
+              <ImportAlphaChannel>True</ImportAlphaChannel>
+            </Source>
+          </Sprite>
+          <Sprite Slot="9" Width="283" Height="595" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+            <Source>
+              <FileName>C:\Users\matth\Downloads\austin_awooga_happy.png</FileName>
+              <OffsetX>0</OffsetX>
+              <OffsetY>0</OffsetY>
+              <ImportHeight>595</ImportHeight>
+              <ImportWidth>283</ImportWidth>
+              <ImportAsTile>False</ImportAsTile>
+              <Frame>0</Frame>
+              <RemapToGamePalette>True</RemapToGamePalette>
+              <RemapToRoomPalette>False</RemapToRoomPalette>
+              <ImportMethod>LeaveAsIs</ImportMethod>
+              <TransparentColorIndex>0</TransparentColorIndex>
+              <ImportAlphaChannel>True</ImportAlphaChannel>
+            </Source>
+          </Sprite>
+          <Sprite Slot="10" Width="568" Height="310" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+            <Source>
+              <FileName>C:\Users\matth\Downloads\house (Phone).png</FileName>
+              <OffsetX>0</OffsetX>
+              <OffsetY>0</OffsetY>
+              <ImportHeight>310</ImportHeight>
+              <ImportWidth>568</ImportWidth>
+              <ImportAsTile>False</ImportAsTile>
+              <Frame>0</Frame>
+              <RemapToGamePalette>True</RemapToGamePalette>
+              <RemapToRoomPalette>False</RemapToRoomPalette>
+              <ImportMethod>LeaveAsIs</ImportMethod>
+              <TransparentColorIndex>0</TransparentColorIndex>
+              <ImportAlphaChannel>True</ImportAlphaChannel>
+            </Source>
+          </Sprite>
+          <Sprite Slot="11" Width="854" Height="252" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+            <Source>
+              <FileName>C:\Users\matth\Downloads\game_over (Small).png</FileName>
+              <OffsetX>0</OffsetX>
+              <OffsetY>0</OffsetY>
+              <ImportHeight>252</ImportHeight>
+              <ImportWidth>854</ImportWidth>
               <ImportAsTile>False</ImportAsTile>
               <Frame>0</Frame>
               <RemapToGamePalette>True</RemapToGamePalette>
