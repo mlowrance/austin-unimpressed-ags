@@ -899,7 +899,7 @@
             <IdleDelay>20</IdleDelay>
             <IdleView>0</IdleView>
             <MovementLinkedToAnimation>True</MovementLinkedToAnimation>
-            <MovementSpeed>3</MovementSpeed>
+            <MovementSpeed>12</MovementSpeed>
             <MovementSpeedX>3</MovementSpeedX>
             <MovementSpeedY>0</MovementSpeedY>
             <NormalView>2</NormalView>
@@ -1428,13 +1428,13 @@
               <ImportAlphaChannel>True</ImportAlphaChannel>
             </Source>
           </Sprite>
-          <Sprite Slot="2" Width="338" Height="518" ColorDepth="32" Resolution="Real" AlphaChannel="True">
+          <Sprite Slot="2" Width="453" Height="540" ColorDepth="32" Resolution="Real" AlphaChannel="True">
             <Source>
-              <FileName>C:\Users\matth\Downloads\austin_walk_right_resized.PNG</FileName>
+              <FileName>C:\Users\matth\Downloads\austin_walk_left_resized.PNG</FileName>
               <OffsetX>0</OffsetX>
               <OffsetY>0</OffsetY>
-              <ImportHeight>518</ImportHeight>
-              <ImportWidth>338</ImportWidth>
+              <ImportHeight>540</ImportHeight>
+              <ImportWidth>453</ImportWidth>
               <ImportAsTile>False</ImportAsTile>
               <Frame>0</Frame>
               <RemapToGamePalette>True</RemapToGamePalette>
