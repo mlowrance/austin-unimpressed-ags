@@ -29,11 +29,25 @@ jobs:
       - name: Build Game for Web
         shell: cmd
         run: |
-          # 1. Ensure the directory exists
-          if not exist "Compiled\Web" mkdir "Compiled\Web"
-          # 2. Run the compiler
-          # Note: We use /compile which is the standard flag for the Windows Editor
+          # 1. Run the compile
           .\AGSEditor\AGSEditor.exe /compile "Game.agf"
+          
+          # 2. SANITY CHECK: See what was actually created
+          echo --- BUILD DIRECTORY FILING ---
+          dir /s Compiled
+          
+          # 3. If Compiled\Web is empty, we need to move the files 
+          # Some versions of AGS put the web files in _Debug or a different subfolder
+          if not exist "Compiled\Web\index.html" (
+            echo WARNING: index.html not found in Compiled\Web. Checking other locations...
+            if exist "Compiled\Web\launcher_index.html" ren "Compiled\Web\launcher_index.html" "index.html"
+          )
+          
+          # 4. Final Fail-Safe: If the folder is still empty, stop the workflow here
+          if not exist "Compiled\Web\index.html" (
+            echo ERROR: Web build failed to produce index.html.
+            exit 1
+          )
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
